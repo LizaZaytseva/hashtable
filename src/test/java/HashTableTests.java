@@ -14,7 +14,6 @@ public class HashTableTests {
         table.add(55);
         assertTrue(table.search(12));
         assertFalse(table.search(21));
-
     }
 
     @Test
@@ -24,6 +23,8 @@ public class HashTableTests {
         table.add(12);
         table.add(31);
         assertEquals("15 - 15\n12 - 12\n31 - 31", table.toString());
+        table.add(44);
+        assertEquals("15 - 15\n12 - 12\n31 - 31\n44 - 44", table.toString());
     }
 
     @Test
@@ -34,7 +35,6 @@ public class HashTableTests {
         table.add(31);
         table.add(13);
         assertEquals("13 - 13", table.set(3).toString());
-
     }
 
     @Test
@@ -46,7 +46,6 @@ public class HashTableTests {
         table.add(13);
         table.remove(31);
         assertEquals("15 - 15\n12 - 12\n13 - 13", table.toString());
-
     }
 
     @Test
@@ -56,17 +55,19 @@ public class HashTableTests {
         table.add(12);
         table.add(31);
         assertEquals(31, table.get(31));
-
     }
 
     @Test
     public void equal (){
         HashTable table1 = new HashTable();
         HashTable table2 = new HashTable();
+        HashTable table3 = new HashTable();
         table1.add(13);
         table2.add(13);
         table1.add(14);
         table2.add(14);
-
+        table3.add(15);
+        assertTrue(table1.equal(table2));
+        assertFalse(table1.equal(table3));
     }
 }

@@ -25,9 +25,6 @@ public class HashTable {
         body = new ArrayList<>();
     }
 
-    HashTable(int initialNum) {
-    }
-
     //поиск числа по ключу
     public int get(int key) {
         int result = 0;
@@ -53,7 +50,7 @@ public class HashTable {
     public void remove(int key) {
         if (this.search(key)) {
             for (HashPair aBody : body) {
-                if (key == aBody.getFirst()) aBody.remove();
+                if (key == aBody.getFirst()) body.remove(aBody);
             }
         } else throw new IndexOutOfBoundsException();
     }
@@ -73,9 +70,9 @@ public class HashTable {
     }
 
     //сравнение на равенство 2 hashTable
-    public boolean equal(ArrayList<HashPair> body2) {
+    public boolean equal( HashTable body2) {
         for (int i = 0; i < body.size(); i++) {
-            if ((body.get(i).getSecond() != body2.get(i).getSecond())||(body.get(i).getFirst() != body2.get(i).getFirst()))
+            if ((this.set(i).getSecond() != body2.set(i).getSecond()))
                 return false;
         }
         return true;
